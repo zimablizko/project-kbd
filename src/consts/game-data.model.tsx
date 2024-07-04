@@ -1,4 +1,10 @@
+import { PlayerLocation } from '../store/model/game-state.model';
+
 export type GameData = {
+  settings: {
+    debugMode: boolean;
+    minDistance: number;
+  };
   stages: {
     [key: number]: GameStage;
   };
@@ -9,9 +15,6 @@ export type GameStage = {
   message: string;
   nextCondition: {
     answer: string | null;
-    location: {
-      lat: number;
-      long: number;
-    } | null;
+    location: PlayerLocation | null;
   };
 };

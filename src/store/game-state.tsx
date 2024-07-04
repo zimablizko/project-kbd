@@ -6,6 +6,10 @@ import { GameState, StateAction } from './model/game-state.model';
 let initialState: GameState = {
   currentstage: 0,
   coins: 0,
+  currentLocation: {
+    lat: 0,
+    long: 0,
+  },
 };
 
 let maxStages = Object.keys(GAME_DATA.stages).length - 1;
@@ -15,7 +19,7 @@ const gameStateSlice = createSlice({
   initialState: saveManager.load('kbd_gameState') ?? (initialState as GameState),
   reducers: {
     incrementCoins: (state: GameState, action: StateAction) => {
-      state.coins += action.payload;
+      state.coins += +action.payload;
       console.log('Coins:', state.coins);
       saveManager.save('kbd_gameState', state);
     },
@@ -26,15 +30,16 @@ const gameStateSlice = createSlice({
       state.currentstage += 1;
       saveManager.save('kbd_gameState', state);
     },
-    resetGame: (state: GameState) => {
-      Object.keys(initialState).forEach((key) => {
-        state[key as keyof GameState] = initialState[key as keyof GameState];
-      });
-
+    setLocation: (state: GameState, action: StateAction) => {
+      state.currentLocation = JSON.parse(action.payload);
+      saveManager.save('kbd_gameState', state);
+    },
+    resetGame: () => {
       saveManager.reset('kbd_gameState');
+      document.location.reload();
     },
   },
 });
 
 export default gameStateSlice.reducer;
-export const { incrementCoins, incrementStage, resetGame } = gameStateSlice.actions;
+export const { incrementCoins, incrementStage, resetGame, setLocation } = gameStateSlice.actions;
