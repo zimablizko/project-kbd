@@ -58,7 +58,9 @@ const LocationTracker = () => {
         ) : (
           <p>Loading...</p>
         )
-      ) : null}
+      ) : (
+        <p>GPS: {location ? '✅' : '❌'}</p>
+      )}
     </div>
   );
 };

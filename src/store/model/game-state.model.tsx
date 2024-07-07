@@ -2,6 +2,7 @@ export type GameState = {
   currentstage: number;
   coins: number;
   currentLocation: PlayerLocation;
+  hints: number[];
 };
 
 export type PlayerLocation = {

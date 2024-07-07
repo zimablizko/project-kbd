@@ -5,11 +5,12 @@ import { GameState, StateAction } from './model/game-state.model';
 
 let initialState: GameState = {
   currentstage: 0,
-  coins: 0,
+  coins: 50,
   currentLocation: {
     lat: 0,
     long: 0,
   },
+  hints: [],
 };
 
 let maxStages = Object.keys(GAME_DATA.stages).length - 1;
@@ -28,10 +29,18 @@ const gameStateSlice = createSlice({
         return;
       }
       state.currentstage += 1;
+      if (state.currentstage > 1) {
+        state.coins += GAME_DATA.settings.hintLevelBonus;
+      }
       saveManager.save('kbd_gameState', state);
     },
     setLocation: (state: GameState, action: StateAction) => {
       state.currentLocation = JSON.parse(action.payload);
+      saveManager.save('kbd_gameState', state);
+    },
+    addHint: (state: GameState, action: StateAction) => {
+      state.hints.push(+action.payload);
+      state.coins -= +GAME_DATA.settings.hintCost;
       saveManager.save('kbd_gameState', state);
     },
     resetGame: () => {
@@ -42,4 +51,4 @@ const gameStateSlice = createSlice({
 });
 
 export default gameStateSlice.reducer;
-export const { incrementCoins, incrementStage, resetGame, setLocation } = gameStateSlice.actions;
+export const { incrementCoins, incrementStage, resetGame, setLocation, addHint } = gameStateSlice.actions;

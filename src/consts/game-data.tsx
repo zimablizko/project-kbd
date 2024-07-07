@@ -4,6 +4,8 @@ export const GAME_DATA: GameData = {
   settings: {
     minDistance: 30,
     debugMode: true,
+    hintCost: 25,
+    hintLevelBonus: 15,
   },
   stages: {
     0: {
@@ -18,6 +20,7 @@ export const GAME_DATA: GameData = {
       nextCondition: {
         answer: 'да|ага|yes|ok|ок|понятно|si',
         location: null,
+        minDistance: null,
       },
     },
     1: {
@@ -41,12 +44,14 @@ export const GAME_DATA: GameData = {
                 Наяды и боги в камне живут.<br>
                 К фонтану подойди, где вода поёт,<br>
                 А рядом сад зелёный тебя привлечёт.`,
+      hint: `Ищи самый большой собор, площадь рядом с ним`,
       nextCondition: {
         answer: null,
         location: {
           lat: 39.476323711868446,
           long: -0.37529026991366704,
         },
+        minDistance: 50,
       },
     },
     2: {
@@ -65,9 +70,11 @@ export const GAME_DATA: GameData = {
                 Греки Посейдоном звали, известно.<br>
                 Кто этот бородатый речной властелин,<br>
                 Что в центре фонтана лежит не один?`,
+      hint: `***т**`,
       nextCondition: {
         answer: 'нептун|neptuno|neptune',
         location: null,
+        minDistance: null,
       },
     },
 
@@ -82,12 +89,14 @@ export const GAME_DATA: GameData = {
         Вкусы Валенсии каждому рады. <br>
         Найди это место, где жизнь течёт,<br>
         В ароматах и звуках город живёт.`,
+      hint: `Рядом с La Lonja de la Seda`,
       nextCondition: {
         answer: null,
         location: {
           lat: 39.473767533205994,
           long: -0.37842933316904676,
         },
+        minDistance: 50,
       },
     },
     4: {
@@ -100,9 +109,11 @@ export const GAME_DATA: GameData = {
       Найди этот уголок, где их имена звучат, 
       и каждый день свежесть на прилавках лежит. 
       Ответом верным будет продукт, что они продают.`,
+      hint: `*р***`,
       nextCondition: {
         answer: 'орехи|орех|nuts|nut',
         location: null,
+        minDistance: null,
       },
     },
 
@@ -122,12 +133,14 @@ export const GAME_DATA: GameData = {
                 Флаги трепещут, как в море дельфины.<br>
                 Найди эту площадь, взгляни на часы,<br>
                 Здесь время Валенсии, здесь её сны.`,
+      hint: `Самое большое пустое пространство в городе`,
       nextCondition: {
         answer: null,
         location: {
           lat: 39.46974596048871,
           long: -0.3764592905760698,
         },
+        minDistance: 50,
       },
     },
     6: {
@@ -146,9 +159,11 @@ export const GAME_DATA: GameData = {
                 Там страж притаился, не хочет назваться.<br>
                 Подними свои очи, осмотрись не спеша,<br>
                 И встретишь ты взгляд каменного стража.`,
+      hint: `**в`,
       nextCondition: {
         answer: 'лев|lion',
         location: null,
+        minDistance: null,
       },
     },
 
@@ -168,12 +183,14 @@ export const GAME_DATA: GameData = {
                 Секрет этот город надёжно хранил.<br>
                 Чтоб клад отыскать, ты к нему поспеши,<br>
                 За главным вокзалом свой путь соверши.`,
+      hint: `Глупо, но на карте это место не зелёное. Зато имеет форму треугольника.`,
       nextCondition: {
         answer: null,
         location: {
           lat: 39.45767244657626,
           long: -0.37812418552983224,
         },
+        minDistance: 50,
       },
     },
 
@@ -193,9 +210,11 @@ export const GAME_DATA: GameData = {
                 И слово-ответ скорее узнай.<br>
                 Оно не число, но смысл тот же самый,<br>
                 Объединяет пальмы, как в головоломке занятной.`,
+      hint: `д*****`,
       nextCondition: {
         answer: 'дюжина',
         location: null,
+        minDistance: null,
       },
     },
 
@@ -210,12 +229,14 @@ export const GAME_DATA: GameData = {
                 Всё это герой подарил как бы детям.<br>
                 Огромен он ростом, но добр и не страшен,<br>
                 Герой из страниц, в реальность украшен.`,
+      hint: `Почти напрямик по Av. de Peris i Valero`,
       nextCondition: {
         answer: null,
         location: {
           lat: 39.462905440968385,
           long: -0.35969820143051917,
         },
+        minDistance: 50,
       },
     },
     10: {
@@ -232,9 +253,11 @@ export const GAME_DATA: GameData = {
                 <br>
                 Найди эту сценку, ответ назови,<br>
                 И тайну скульптуры для всех оживи.`,
+      hint: `***т**к*`,
       nextCondition: {
         answer: 'картошка|картофель|patata|potato',
         location: null,
+        minDistance: null,
       },
     },
 
@@ -254,12 +277,14 @@ export const GAME_DATA: GameData = {
                 И каждый маршрут начинается в срок.<br>
                 Угадай это место, загадку реши,<br>
                 И к новым открытиям смело спеши!`,
+      hint: `Были там месяц назад`,
       nextCondition: {
         answer: null,
         location: {
           lat: 39.46791025380401,
           long: -0.3429519956761619,
         },
+        minDistance: 50,
       },
     },
     12: {
@@ -278,9 +303,11 @@ export const GAME_DATA: GameData = {
                 Когда этот замок подняли со дна?<br>
                 Века пролетели, а он всё стоит,<br>
                 И время на камне своём сторожит.`,
+      hint: `Не ну я не знаю, всё же написано!`,
       nextCondition: {
         answer: '1900',
         location: null,
+        minDistance: null,
       },
     },
 
@@ -300,12 +327,25 @@ export const GAME_DATA: GameData = {
                 Лучший из всех, что только можно найти.<br>
                 Здесь ты поймёшь, что весь мир у тебя в руках,<br>
                 На этой земле, где море и суша слились.`,
+      hint: `Там еще с одной стороны ресторан, а с другой - лодочки`,
       nextCondition: {
         answer: null,
         location: {
           lat: 39.462440272994456,
           long: -0.312397680018576,
         },
+        minDistance: null,
+      },
+    },
+
+    14: {
+      title: 'Победа!',
+      message: `Поздравляю! Ты прошла все уровни!<br><br>
+                Если всё прошло удачно, я жду тебя где-то рядом.<br>`,
+      nextCondition: {
+        answer: null,
+        location: null,
+        minDistance: null,
       },
     },
   },
